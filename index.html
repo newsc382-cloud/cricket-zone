@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRICKET ZONE</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#090909;color:white;font-family:Arial,sans-serif}
+header{background:#151515;padding:18px;border-bottom:2px solid #e32636}
+.logo{font-size:25px;font-weight:900;color:#ff303f}
+.logo span{color:white}
+nav{display:flex;justify-content:space-around;background:#191919;padding:14px 5px}
+nav a{color:white;text-decoration:none;font-size:14px}
+main{padding:16px}
+h2{border-left:4px solid #ed2939;padding-left:10px}
+.hero{background:linear-gradient(120deg,#39080e,#171717);padding:22px;border-radius:12px}
+.hero h1{font-size:30px;margin:5px 0;color:#ff3445}
+.card{background:#191919;padding:16px;border-radius:12px;margin:13px 0;border:1px solid #333}
+.tag{color:#ff5360;font-size:12px;font-weight:bold}
+.teams{display:flex;justify-content:space-between;align-items:center;font-size:17px;font-weight:bold;margin:15px 0}
+.score{font-size:14px;color:#ddd}
+button{background:#e32636;color:white;border:0;padding:10px 14px;border-radius:7px;font-weight:bold}
+footer{text-align:center;color:#999;padding:25px}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">🏏 CRICKET <span>ZONE</span></div>
+  <p id="subtitle">Your World of Cricket</p>
+  <button onclick="changeLang()" id="lang">हिंदी</button>
+</header>
+
+<nav>
+  <a href="#home" id="n1">Home</a>
+  <a href="#live" id="n2">Live</a>
+  <a href="#upcoming" id="n3">Fixtures</a>
+  <a href="#news" id="n4">News</a>
+</nav>
+
+<main id="home">
+  <section class="hero">
+    <p class="tag">WELCOME TO CRICKET ZONE</p>
+    <h1 id="welcome">CRICKET NEVER STOPS!</h1>
+    <p id="desc">Live scores, match updates and cricket news — all in one place.</p>
+  </section>
+
+  <section id="live">
+    <h2 id="liveTitle">Live Matches</h2>
+    <div class="card">
+      <span class="tag">DEMO SCORE · NOT LIVE</span>
+      <div class="teams"><span>🇮🇳 India</span><span>VS</span><span>🇦🇺 Australia</span></div>
+      <div class="score">India 185/4 (20 overs)</div>
+      <p class="score">Sample match card — live data will be connected later.</p>
+    </div>
+  </section>
+
+  <section id="upcoming">
+    <h2 id="upTitle">Upcoming Matches</h2>
+    <div class="card">
+      <span class="tag">SAMPLE FIXTURE</span>
+      <div class="teams"><span>🏴 England</span><span>VS</span><span>🇿🇦 South Africa</span></div>
+      <p class="score">Match schedule demo</p>
+    </div>
+  </section>
+
+  <section id="news">
+    <h2 id="newsTitle">Cricket News</h2>
+    <div class="card">
+      <span class="tag">CRICKET UPDATE</span>
+      <h3 id="newsHead">The latest cricket updates will appear here.</h3>
+      <p class="score" id="newsText">News automation will be connected in a later step.</p>
+    </div>
+  </section>
+</main>
+
+<footer>© 2026 CRICKET ZONE · Made for Cricket Fans</footer>
+
+<script>
+let hindi=false;
+function changeLang(){
+ hindi=!hindi;
+ document.getElementById("lang").innerText=hindi?"English":"हिंदी";
+ document.getElementById("subtitle").innerText=hindi?"आपकी क्रिकेट की दुनिया":"Your World of Cricket";
+ document.getElementById("n1").innerText=hindi?"होम":"Home";
+ document.getElementById("n2").innerText=hindi?"लाइव":"Live";
+ document.getElementById("n3").innerText=hindi?"मैच":"Fixtures";
+ document.getElementById("n4").innerText=hindi?"समाचार":"News";
+ document.getElementById("welcome").innerText=hindi?"क्रिकेट कभी नहीं रुकता!":"CRICKET NEVER STOPS!";
+ document.getElementById("desc").innerText=hindi?"लाइव स्कोर, मैच अपडेट और क्रिकेट समाचार — सब एक जगह।":"Live scores, match updates and cricket news — all in one place.";
+ document.getElementById("liveTitle").innerText=hindi?"लाइव मैच":"Live Matches";
+ document.getElementById("upTitle").innerText=hindi?"आने वाले मैच":"Upcoming Matches";
+ document.getElementById("newsTitle").innerText=hindi?"क्रिकेट समाचार":"Cricket News";
+ document.getElementById("newsHead").innerText=hindi?"ताज़ा क्रिकेट अपडेट यहाँ दिखाई देंगे।":"The latest cricket updates will appear here.";
+ document.getElementById("newsText").innerText=hindi?"समाचार ऑटोमेशन अगले चरण में जोड़ा जाएगा।":"News automation will be connected in a later step.";
+}
+</script>
+</body>
+</html>
