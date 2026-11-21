@@ -3,97 +3,165 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CRICKET ZONE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CRICKET ZONE | Cricket Dashboard</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#090909;color:white;font-family:Arial,sans-serif}
-header{background:#151515;padding:18px;border-bottom:2px solid #e32636}
-.logo{font-size:25px;font-weight:900;color:#ff303f}
+body{margin:0;background:#090b0e;color:#f5f5f5;font-family:Arial,sans-serif}
+header{background:#14171c;padding:17px;border-bottom:2px solid #ed2939}
+.logo{font-size:25px;font-weight:900;color:#ff3548}
 .logo span{color:white}
-nav{display:flex;justify-content:space-around;background:#191919;padding:14px 5px}
-nav a{color:white;text-decoration:none;font-size:14px}
-main{padding:16px}
-h2{border-left:4px solid #ed2939;padding-left:10px}
-.hero{background:linear-gradient(120deg,#39080e,#171717);padding:22px;border-radius:12px}
-.hero h1{font-size:30px;margin:5px 0;color:#ff3445}
-.card{background:#191919;padding:16px;border-radius:12px;margin:13px 0;border:1px solid #333}
-.tag{color:#ff5360;font-size:12px;font-weight:bold}
-.teams{display:flex;justify-content:space-between;align-items:center;font-size:17px;font-weight:bold;margin:15px 0}
-.score{font-size:14px;color:#ddd}
-button{background:#e32636;color:white;border:0;padding:10px 14px;border-radius:7px;font-weight:bold}
-footer{text-align:center;color:#999;padding:25px}
+.sub{color:#aaa;font-size:13px;margin-top:7px}
+button{cursor:pointer;border:0;border-radius:7px;padding:10px 14px;background:#ed2939;color:white;font-weight:bold}
+nav{display:flex;gap:22px;overflow-x:auto;padding:15px;background:#171a20;position:sticky;top:0;z-index:5}
+nav a{color:white;text-decoration:none;white-space:nowrap;font-size:14px}
+main{max-width:850px;margin:auto;padding:15px}
+.hero{background:linear-gradient(120deg,#4a1019,#17191e);padding:23px;border-radius:13px;margin:12px 0 23px}
+.hero small,.tag{color:#ff5969;font-weight:bold}
+.hero h1{font-size:29px;margin:12px 0}
+.hero p{color:#ddd;line-height:1.5}
+.section{margin:27px 0}
+.section h2{font-size:21px;border-left:4px solid #ed2939;padding-left:11px}
+.card{background:#171a20;border:1px solid #30343b;border-radius:12px;padding:16px;margin:12px 0}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.teams{font-size:17px;font-weight:bold;margin:18px 0}
+.muted{color:#aeb3bd;font-size:13px;line-height:1.5}
+.score{font-size:22px;font-weight:bold;margin:10px 0}
+.pill{font-size:11px;background:#382027;color:#ff7581;padding:5px 8px;border-radius:5px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:#20242c;border-radius:9px;padding:14px}
+.stat b{display:block;font-size:20px;color:#ff5263;margin-bottom:5px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tabs button{background:#292d35}
+.tabs button.active{background:#ed2939}
+table{width:100%;border-collapse:collapse;font-size:13px}
+td,th{padding:12px 7px;text-align:left;border-bottom:1px solid #333}
+th{color:#ff7884}
+footer{text-align:center;padding:28px;color:#999;font-size:12px}
+.hide{display:none}
+@media(max-width:420px){.hero h1{font-size:25px}.teams{font-size:14px}.grid{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
 <header>
-  <div class="logo">🏏 CRICKET <span>ZONE</span></div>
-  <p id="subtitle">Your World of Cricket</p>
-  <button onclick="changeLang()" id="lang">हिंदी</button>
+ <div class="logo">🏏 CRICKET <span>ZONE</span></div>
+ <div class="sub" id="subtitle">Your World of Cricket</div>
+ <button onclick="language()" id="lang" style="margin-top:12px">हिंदी</button>
 </header>
 
 <nav>
-  <a href="#home" id="n1">Home</a>
-  <a href="#live" id="n2">Live</a>
-  <a href="#upcoming" id="n3">Fixtures</a>
-  <a href="#news" id="n4">News</a>
+ <a href="#home" id="navHome">Home</a>
+ <a href="#live" id="navLive">Live</a>
+ <a href="#series" id="navSeries">Series</a>
+ <a href="#fixtures" id="navFixtures">Fixtures</a>
+ <a href="#points" id="navPoints">Points Table</a>
+ <a href="#news" id="navNews">News</a>
 </nav>
 
 <main id="home">
-  <section class="hero">
-    <p class="tag">WELCOME TO CRICKET ZONE</p>
-    <h1 id="welcome">CRICKET NEVER STOPS!</h1>
-    <p id="desc">Live scores, match updates and cricket news — all in one place.</p>
-  </section>
+ <div class="hero">
+  <small>WELCOME TO CRICKET ZONE</small>
+  <h1 id="heroTitle">THE HOME OF WORLD CRICKET</h1>
+  <p id="heroText">Live cricket coverage, match centres, fixtures, series and cricket news — all in one place.</p>
+  <div class="row">
+   <span class="pill">CRICKET • EVERY FORMAT</span>
+   <span class="muted">TEST | ODI | T20</span>
+  </div>
+ </div>
 
-  <section id="live">
-    <h2 id="liveTitle">Live Matches</h2>
-    <div class="card">
-      <span class="tag">DEMO SCORE · NOT LIVE</span>
-      <div class="teams"><span>🇮🇳 India</span><span>VS</span><span>🇦🇺 Australia</span></div>
-      <div class="score">India 185/4 (20 overs)</div>
-      <p class="score">Sample match card — live data will be connected later.</p>
-    </div>
-  </section>
+ <div class="grid">
+  <div class="stat"><b>TEST</b><span class="muted" id="testText">Classic cricket</span></div>
+  <div class="stat"><b>ODI</b><span class="muted" id="odiText">One Day Cricket</span></div>
+  <div class="stat"><b>T20</b><span class="muted" id="t20Text">Fast Cricket</span></div>
+  <div class="stat"><b>WORLD</b><span class="muted" id="worldText">Global coverage</span></div>
+ </div>
 
-  <section id="upcoming">
-    <h2 id="upTitle">Upcoming Matches</h2>
-    <div class="card">
-      <span class="tag">SAMPLE FIXTURE</span>
-      <div class="teams"><span>🏴 England</span><span>VS</span><span>🇿🇦 South Africa</span></div>
-      <p class="score">Match schedule demo</p>
-    </div>
-  </section>
+ <section class="section" id="live">
+  <h2 id="liveTitle">Match Centre</h2>
+  <div class="card">
+   <div class="row">
+    <span class="tag">SAMPLE MATCH</span>
+    <span class="pill">DEMO DATA</span>
+   </div>
+   <div class="teams row"><span>🇮🇳 India</span><span>VS</span><span>🇦🇺 Australia</span></div>
+   <div class="score">185/4 <span class="muted">(20 overs)</span></div>
+   <p class="muted" id="demoNote">Illustrative score only. This is not a live match score.</p>
+   <button onclick="alert('Live match data will be connected after an authorized cricket data provider is configured.')">View Match Centre</button>
+  </div>
+  <div class="card">
+   <span class="tag">SAMPLE MATCH</span>
+   <div class="teams row"><span>🏴 England</span><span>VS</span><span>🇿🇦 South Africa</span></div>
+   <p class="muted">Example match card • Not live</p>
+  </div>
+ </section>
 
-  <section id="news">
-    <h2 id="newsTitle">Cricket News</h2>
-    <div class="card">
-      <span class="tag">CRICKET UPDATE</span>
-      <h3 id="newsHead">The latest cricket updates will appear here.</h3>
-      <p class="score" id="newsText">News automation will be connected in a later step.</p>
-    </div>
-  </section>
+ <section class="section" id="series">
+  <h2 id="seriesTitle">Featured Cricket</h2>
+  <div class="card">
+   <div class="row"><b>ICC Tournaments</b><span class="pill">INTERNATIONAL</span></div>
+   <p class="muted">World Cups • Champions Trophy • World Test Championship</p>
+  </div>
+  <div class="card">
+   <div class="row"><b>Major Leagues</b><span class="pill">FRANCHISE</span></div>
+   <p class="muted">IPL • Big Bash • PSL • The Hundred • Other leagues</p>
+  </div>
+  <div class="card">
+   <div class="row"><b>Domestic Cricket</b><span class="pill">ALL FORMATS</span></div>
+   <p class="muted">First-class • List A • Domestic T20 competitions</p>
+  </div>
+ </section>
+
+ <section class="section" id="fixtures">
+  <h2 id="fixtureTitle">Upcoming Fixtures</h2>
+  <div class="card">
+   <span class="tag">SAMPLE FIXTURE</span>
+   <div class="teams row"><span>🇮🇳 India</span><span>VS</span><span>🏴 England</span></div>
+   <p class="muted">Example fixture • Official schedule not connected</p>
+  </div>
+  <div class="card">
+   <span class="tag">SAMPLE FIXTURE</span>
+   <div class="teams row"><span>🇵🇰 Pakistan</span><span>VS</span><span>🇳🇿 New Zealand</span></div>
+   <p class="muted">Example fixture • Official schedule not connected</p>
+  </div>
+ </section>
+
+ <section class="section" id="points">
+  <h2 id="pointsTitle">Points Table</h2>
+  <div class="card">
+   <span class="pill">ILLUSTRATIVE TABLE</span>
+   <table>
+    <tr><th>Team</th><th>Played</th><th>Points</th></tr>
+    <tr><td>India</td><td>0</td><td>0</td></tr>
+    <tr><td>Australia</td><td>0</td><td>0</td></tr>
+    <tr><td>England</td><td>0</td><td>0</td></tr>
+   </table>
+   <p class="muted">Sample layout only. Official standings will be connected later.</p>
+  </div>
+ </section>
+
+ <section class="section" id="news">
+  <h2 id="newsTitle">Cricket News</h2>
+  <div class="card">
+   <span class="tag">NEWS DESK</span>
+   <h3 id="newsHead">Your cricket news feed is coming soon.</h3>
+   <p class="muted" id="newsText">Verified news sources and automatic summaries will be connected in a later step.</p>
+  </div>
+ </section>
 </main>
 
-<footer>© 2026 CRICKET ZONE · Made for Cricket Fans</footer>
+<footer>© 2026 CRICKET ZONE • Made for Cricket Fans</footer>
 
 <script>
 let hindi=false;
-function changeLang(){
+function language(){
  hindi=!hindi;
- document.getElementById("lang").innerText=hindi?"English":"हिंदी";
- document.getElementById("subtitle").innerText=hindi?"आपकी क्रिकेट की दुनिया":"Your World of Cricket";
- document.getElementById("n1").innerText=hindi?"होम":"Home";
- document.getElementById("n2").innerText=hindi?"लाइव":"Live";
- document.getElementById("n3").innerText=hindi?"मैच":"Fixtures";
- document.getElementById("n4").innerText=hindi?"समाचार":"News";
- document.getElementById("welcome").innerText=hindi?"क्रिकेट कभी नहीं रुकता!":"CRICKET NEVER STOPS!";
- document.getElementById("desc").innerText=hindi?"लाइव स्कोर, मैच अपडेट और क्रिकेट समाचार — सब एक जगह।":"Live scores, match updates and cricket news — all in one place.";
- document.getElementById("liveTitle").innerText=hindi?"लाइव मैच":"Live Matches";
- document.getElementById("upTitle").innerText=hindi?"आने वाले मैच":"Upcoming Matches";
- document.getElementById("newsTitle").innerText=hindi?"क्रिकेट समाचार":"Cricket News";
- document.getElementById("newsHead").innerText=hindi?"ताज़ा क्रिकेट अपडेट यहाँ दिखाई देंगे।":"The latest cricket updates will appear here.";
- document.getElementById("newsText").innerText=hindi?"समाचार ऑटोमेशन अगले चरण में जोड़ा जाएगा।":"News automation will be connected in a later step.";
+ const words={
+ en:["Your World of Cricket","हिंदी","Home","Live","Series","Fixtures","Points Table","News","THE HOME OF WORLD CRICKET","Live cricket coverage, match centres, fixtures, series and cricket news — all in one place.","Classic cricket","One Day Cricket","Fast Cricket","Global coverage","Match Centre","Illustrative score only. This is not a live match score.","Featured Cricket","Upcoming Fixtures","Points Table","Cricket News","Your cricket news feed is coming soon.","Verified news sources and automatic summaries will be connected in a later step."],
+ hi:["आपकी क्रिकेट की दुनिया","English","होम","लाइव","सीरीज़","मैच","अंक तालिका","समाचार","विश्व क्रिकेट का घर","लाइव क्रिकेट कवरेज, मैच सेंटर, मैच शेड्यूल और क्रिकेट समाचार — सब एक जगह।","टेस्ट क्रिकेट","एक दिवसीय क्रिकेट","तेज़ क्रिकेट","दुनियाभर का क्रिकेट","मैच सेंटर","यह केवल उदाहरण स्कोर है, लाइव स्कोर नहीं।","प्रमुख क्रिकेट","आने वाले मैच","अंक तालिका","क्रिकेट समाचार","आपकी क्रिकेट न्यूज़ फ़ीड जल्द आ रही है।","विश्वसनीय समाचार स्रोत और ऑटोमैटिक सारांश बाद में जोड़े जाएँगे।"]
+ };
+ let w=hindi?words.hi:words.en;
+ let ids=["subtitle","lang","navHome","navLive","navSeries","navFixtures","navPoints","navNews","heroTitle","heroText","testText","odiText","t20Text","worldText","liveTitle","demoNote","seriesTitle","fixtureTitle","pointsTitle","newsTitle","newsHead","newsText"];
+ ids.forEach((id,i)=>document.getElementById(id).innerText=w[i]);
 }
 </script>
 </body>
